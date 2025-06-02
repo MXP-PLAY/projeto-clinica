@@ -45,7 +45,12 @@ int totalPacientes = 0;
 
 Consulta* consultas = NULL;
 int totalConsultas = 0;
+// Função para limpar o terminal
 
+void limparterminal()
+{
+	system("clear");
+}
 // Função para obter nome da especialidade
 const char* nomeEspecialidade(Especialidade esp) {
     switch (esp) {
@@ -265,11 +270,13 @@ void agendarConsulta() {
 
     printf("Data (DD/MM/AAAA): ");
     fgets(c->data, 11, stdin);
-    strtok(c->data, "\n");
+    strtok(c->data, "\n");  
+
+    while (getchar() != '\n');
 
     printf("Hora (HH:MM): ");
     fgets(c->hora, 6, stdin);
-    strtok(c->hora, "\n");
+    strtok(c->hora, "\n"); 
 
     c->status = AGENDADA;
 
@@ -473,6 +480,7 @@ int main() {
     carregarMedicos();
     carregarPacientes();
     carregarConsultas();
+    limparterminal();
 
     menu();
 
